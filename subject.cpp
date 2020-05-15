@@ -39,7 +39,7 @@ double Subject::immune()
 void Subject::set_immune()
 {
     if (this->_immune <= 0) {
-        this->_immune = 1;
+        this->_immune = 5;
     }
     else {
         this->_immune = this->_immune -= 1;
@@ -53,14 +53,16 @@ double Subject::sick()
 void Subject::set_sick()
 {
     if (this->_sick == 0) {
-        if (this->_immune <= 0) {
-            this->_sick = 200;
-        }
+
+        this->_sick = 100;
     }
     else {
         this->_sick = this->_sick -= 1;
     }
-    this->set_immune();
+    if(this->_sick == 0) 
+    {
+        this->recover();
+    }
 }
 
 double Subject::x()
@@ -127,9 +129,8 @@ bool Subject::recovered()
 
 void Subject::recover()
 {
-    this->_infected = false;
     this->set_immune();
-    this->_sick = 0;
+    this->_infected = false;
 }
 
 double Subject::angle()
