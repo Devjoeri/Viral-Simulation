@@ -16,6 +16,7 @@
 
 #include "subject.h"
 #include <math.h>
+#include <time.h>
 
 namespace corsim
 {
@@ -26,6 +27,40 @@ Subject::Subject(int x, int y, int radius, bool infected)
     this->_y = y;
     this->_radius = radius;
     this->_infected = infected;
+    this->_sick = 0;
+    this->_immune = 0;
+}
+
+double Subject::immune()
+{
+    return this->_immune;
+}
+
+void Subject::set_immune()
+{
+    if (this->_immune <= 0) {
+        this->_immune = 1;
+    }
+    else {
+        this->_immune = this->_immune -= 1;
+    }
+}
+
+double Subject::sick()
+{
+    return this->_sick;
+}
+void Subject::set_sick()
+{
+    if (this->_sick == 0) {
+        if (this->_immune <= 0) {
+            this->_sick = 200;
+        }
+    }
+    else {
+        this->_sick = this->_sick -= 1;
+    }
+    this->set_immune();
 }
 
 double Subject::x()
@@ -80,7 +115,21 @@ bool Subject::infected()
 
 void Subject::infect()
 {
-    this->_infected = true;
+    if (this->_immune <= 0) {
+        this->_infected = true;
+    }
+}
+
+bool Subject::recovered()
+{
+    return this->_infected;
+}
+
+void Subject::recover()
+{
+    this->_infected = false;
+    this->set_immune();
+    this->_sick = 0;
 }
 
 double Subject::angle()

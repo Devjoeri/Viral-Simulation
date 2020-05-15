@@ -27,8 +27,12 @@ class Subject
 {
     public:
         Subject(int x, int y, int radius, bool infected);
+        double immune();
+        double sick();
         double x();
         double y();
+        void set_immune();
+        void set_sick();
         void set_x(double x);
         void set_y(double y);
         double dx(); //Speed on x axis
@@ -38,12 +42,15 @@ class Subject
         void set_dy(double dy);
         bool infected();
         void infect();
+        bool recovered();
+        void recover();
         double angle();
         double speed();
     private:
-        double _x = 0,_y = 0, _dx = 0, _dy = 0;
-        bool _infected = false;
+        double _x = 0,_y = 0, _dx = 0, _dy = 0, _sick = 0, _immune = 0;
+        bool _infected = false, _healthy = false;
         int _radius = 0;
+
 };
 
 };

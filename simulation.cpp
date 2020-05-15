@@ -83,6 +83,12 @@ void Simulation::tick()
 
         if(s.infected())
         {
+            s.set_sick();
+
+            if (s.sick() == 0) {
+                s.recover();
+                numberInfected--;
+            }
             numberInfected++;
         }
     }
