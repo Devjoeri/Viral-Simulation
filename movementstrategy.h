@@ -1,5 +1,6 @@
 #pragma once
 
+//interface for both strategies.
 
 class MovementStrategy
 {

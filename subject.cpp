@@ -39,19 +39,21 @@ double Subject::immune()
 
 void Subject::set_strategy(MovementStrategy *strategy) 
 {
+    delete this->_strategy;
     this->_strategy = strategy;
 }
 
 int Subject::execute() {
-    //return this->_strategy->move();
-    return true;
+    return this->_strategy->move();
+    //uncomment this line and comment the line above to disable the LockdownStrategy
+    //return true;
 }
 void Subject::set_immune()
 {
-    if (this->_immune <= 0) {
-        this->_immune = 2;
-    }
-    else {
+    this->_immune = 3;
+}
+void Subject::tear_down() {
+    if (this->_immune > 0) {
         this->_immune = this->_immune -= 1;
     }
 }
@@ -134,11 +136,6 @@ void Subject::infect()
     if (this->_immune <= 0) {
         this->_infected = true;
     }
-}
-
-bool Subject::recovered()
-{
-    return this->_infected;
 }
 
 void Subject::recover()

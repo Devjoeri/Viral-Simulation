@@ -5,7 +5,7 @@ using namespace std;
 namespace corsim
 {
 	bool RegularStrategy::move() {
-		cout << "The subject chooses to move" << endl;
+		cout << "The subject chose to move" << endl;
 		return true;
 	}
 }

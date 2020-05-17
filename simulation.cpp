@@ -84,12 +84,13 @@ void Simulation::tick()
         if(s.infected())
         {
             s.set_sick();
-            s.set_immune();
+            //s.set_immune();
             if (s.sick() == 0) {
                 numberInfected--;
             }
             numberInfected++;
         }
+        s.tear_down();
     }
 
     if(counter % 30 == 0)

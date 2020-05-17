@@ -48,7 +48,8 @@ int main() {
         double y = dist_h(mt); //Randomly generate y position
         
         corsim::Subject su(x,y,SUBJECT_RADIUS,false);
-        if (i < 150) {
+
+        if (i < (SUBJECT_COUNT / 100 * 75)) {
             su.set_strategy(new corsim::LockdownStrategy());
         }
         else {

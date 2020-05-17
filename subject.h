@@ -36,6 +36,7 @@ class Subject
         double x();
         double y();
         void set_immune();
+        void tear_down();
         void set_sick();
         void set_x(double x);
         void set_y(double y);
@@ -46,7 +47,6 @@ class Subject
         void set_dy(double dy);
         bool infected();
         void infect();
-        bool recovered();
         void recover();
         double angle();
         double speed();
