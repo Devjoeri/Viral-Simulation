@@ -16,6 +16,8 @@
 
 #pragma once 
 
+#include "movementstrategy.h"
+
 namespace corsim
 {
     
@@ -28,6 +30,8 @@ class Subject
     public:
         Subject(int x, int y, int radius, bool infected);
         double immune();
+        void set_strategy(MovementStrategy *strategy);
+        int execute();
         double sick();
         double x();
         double y();
@@ -50,6 +54,8 @@ class Subject
         double _x = 0,_y = 0, _dx = 0, _dy = 0, _sick = 0, _immune = 0;
         bool _infected = false, _healthy = false;
         int _radius = 0;
+        MovementStrategy *_strategy;
+        
 
 };
 

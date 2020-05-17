@@ -15,6 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "simulation.h"
+#include "movementstrategy.h"
+#include "regularstrategy.h"
+#include "lockdownstrategy.h"
 #include <iostream>
 #include <random>
 #include <math.h>
@@ -45,6 +48,12 @@ int main() {
         double y = dist_h(mt); //Randomly generate y position
         
         corsim::Subject su(x,y,SUBJECT_RADIUS,false);
+        if (i < 150) {
+            su.set_strategy(new corsim::LockdownStrategy());
+        }
+        else {
+            su.set_strategy(new corsim::RegularStrategy());
+        }
 
         su.set_dx(dist_dx(mt));
         su.set_dy(dist_dy(mt));
@@ -53,7 +62,6 @@ int main() {
         {
             su.infect();
         }
-
         s.add_subject(std::move(su));
     }  
 

@@ -15,6 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "subject.h"
+#include "movementstrategy.h"
+#include "regularstrategy.h"
 #include <math.h>
 #include <time.h>
 
@@ -29,6 +31,7 @@ Subject::Subject(int x, int y, int radius, bool infected)
     this->_infected = infected;
     this->_sick = 0;
     this->_immune = 0;
+    this->_strategy = nullptr;
 }
 
 double Subject::immune()
@@ -36,6 +39,15 @@ double Subject::immune()
     return this->_immune;
 }
 
+void Subject::set_strategy(MovementStrategy *strategy) 
+{
+    this->_strategy = strategy;
+}
+
+int Subject::execute() {
+    //return this->_strategy->move();
+    return true;
+}
 void Subject::set_immune()
 {
     if (this->_immune <= 0) {
@@ -77,12 +89,16 @@ double Subject::y()
 
 void Subject::set_x(double x)
 {
-    this->_x = x;
+    if (this->execute()) {
+        this->_x = x;
+    }
 }
 
 void Subject::set_y(double y)
 {
-    this->_y = y;
+    if (this->execute()) {
+        this->_y = y;
+    }
 }
 
 double Subject::dx()
