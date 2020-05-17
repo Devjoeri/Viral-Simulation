@@ -7,8 +7,6 @@ namespace corsim
     class RegularStrategy : public MovementStrategy
     {
     public:
-        bool move() {
-            return true;
-        }
+        bool move();
     };
 }

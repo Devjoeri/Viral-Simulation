@@ -52,11 +52,9 @@ class Subject
         double speed();
     private:
         double _x = 0,_y = 0, _dx = 0, _dy = 0, _sick = 0, _immune = 0;
-        bool _infected = false, _healthy = false;
+        bool _infected = false;
         int _radius = 0;
         MovementStrategy *_strategy;
-        
-
 };
 
 };

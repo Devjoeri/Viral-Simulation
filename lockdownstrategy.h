@@ -7,8 +7,6 @@ namespace corsim
     class LockdownStrategy : public MovementStrategy
     {
     public:
-        virtual bool move() {
-            return false;
-        }
+        virtual bool move();
     };
 }

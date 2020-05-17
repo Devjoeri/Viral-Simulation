@@ -15,8 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "subject.h"
-#include "movementstrategy.h"
-#include "regularstrategy.h"
 #include <math.h>
 #include <time.h>
 
@@ -51,7 +49,7 @@ int Subject::execute() {
 void Subject::set_immune()
 {
     if (this->_immune <= 0) {
-        this->_immune = 5;
+        this->_immune = 2;
     }
     else {
         this->_immune = this->_immune -= 1;
