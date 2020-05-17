@@ -1,5 +1,4 @@
 #pragma once
-
 #include "movementstrategy.h"
 
 namespace corsim
